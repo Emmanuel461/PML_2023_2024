@@ -15,16 +15,16 @@ The research focuses on the problem of soil salinity in rice production areas wi
 ## Challenges
 The research confronts several challenges:
 
-- **Data Preparation:** Efficient extraction and access to satellite data, along with the selection of appropriate indices for salinity modeling, pose significant challenges.
+- **Data Preparation:** Efficient extraction and access to satellite data and selecting appropriate indices for salinity modeling pose significant challenges.
 - **Identification of Optimal Indices:** Determining the most suitable indices for modeling salinity, considering the specific soil texture characteristics of the study area, is essential for accurate results.
 - **Hyperparameter Optimization:** Attaining optimal hyperparameters is crucial to achieving high accuracy in the model predictions.
-- **Integration of Diverse Data Types:** The integration of soil texture data with satellite imagery presents a unique challenge in ensuring seamless compatibility and meaningful interpretation.
+- **Integration of Diverse Data Types:** Integrating soil texture data with satellite imagery presents a unique challenge in ensuring seamless compatibility and meaningful interpretation.
 
 ## Dataset
 The dataset comprises 183 soil samples collected from the village of Cafine, Guinea-Bissau, along with accompanying soil texture (Clay, Silt, and Sand) data and Sodium Absorption Ratio (SAR) measurements.
 
 ## Method
-The proposed approach utilizes Convolutional Neural Networks 1-D (CNN-1D) to address these challenges. By employing a buffer to extract satellite data and transforming it into tabular format for modeling, the method capitalizes on the strengths of both soil texture and satellite imagery data.
+The proposed approach utilizes Convolutional Neural Networks 1-D (CNN-1D) to address these challenges. By employing a buffer to extract satellite data and transforming it into a tabular format for modeling, the method has an important component of soil texture and satellite imagery data.
 
 ## Evaluation
-Performance evaluation will be conducted using global model accuracy, root mean square error, mean absolute error, linear regression, and Pearson correlation coefficient metrics. These metrics will provide comprehensive insights into the effectiveness of the proposed model in predicting soil salinity levels accurately.
+Performance evaluation will be conducted using global model accuracy, root mean square error, mean absolute error, linear regression, and Pearson correlation coefficient metrics. These metrics will provide comprehensive insights into the effectiveness of the proposed model in accurately predicting soil salinity levels.
