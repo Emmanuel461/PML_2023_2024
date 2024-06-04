@@ -15,13 +15,15 @@ The research focuses on the problem of soil salinity in rice production areas wi
 ## Challenges
 The research confronts several challenges:
 
-- **Data Preparation:** Efficient extraction and access to satellite data and selecting appropriate indices for salinity modeling pose significant challenges.
+- **Data Preparation:** Efficient extraction, access to satellite data, and selecting appropriate indices for salinity modeling pose significant challenges.
 - **Identification of Optimal Indices:** Determining the most suitable indices for modeling salinity, considering the specific soil texture characteristics of the study area, is essential for accurate results.
 - **Hyperparameter Optimization:** Attaining optimal hyperparameters is crucial to achieving high accuracy in the model predictions.
 - **Integration of Diverse Data Types:** Integrating soil texture data with satellite imagery presents a unique challenge in ensuring seamless compatibility and meaningful interpretation.
 
 ## Dataset
 The dataset comprises 183 soil samples collected from the village of Cafine, Guinea-Bissau, along with accompanying soil texture (Clay, Silt, and Sand) data and Sodium Absorption Ratio (SAR) measurements.
+
+The satellite image will be from PlanetScope (PS) sensor with 3x3m of spatial resolution. For more details [PlanetScope Bands] (https://developers.planet.com/docs/apis/data/sensors/).  
 
 ## Method
 The proposed approach utilizes Convolutional Neural Networks 1-D (CNN-1D) to address these challenges. By employing a buffer to extract satellite data and transforming it into a tabular format for modeling, the method has an important component of soil texture and satellite imagery data.
