@@ -23,7 +23,7 @@ The research confronts several challenges:
 ## Dataset
 The dataset comprises 183 soil samples collected from the village of Cafine, Guinea-Bissau, along with accompanying soil texture (Clay, Silt, and Sand) data and Sodium Absorption Ratio (SAR) measurements.
 
-The satellite image will be from PlanetScope (PS) sensor with 3x3m spatial resolution. For more details visit [PlanetScope Bands] .(https://developers.planet.com/docs/apis/data/sensors/). The image will correspond to the month of soil sampling (March 2022). 
+The satellite image will be from PlanetScope (PS) sensor with 3x3m spatial resolution. For more details visit ([PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/). The image will correspond to the month of soil sampling (March 2022). 
 
 ## Method
 The proposed approach utilizes Convolutional Neural Networks 1-D (CNN-1D) to address these challenges. By employing a buffer to extract satellite data and transforming it into a tabular format for modeling, the method has an important component of soil texture and satellite imagery data.
