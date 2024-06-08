@@ -22,9 +22,9 @@ The research confronts several challenges:
 - **Access to the data:** The work will include access to the data using the Google Earth Engine repository and using the library of GeeMap ([Geemap](https://geemap.org/)). 
 
 ## Dataset
-The dataset comprises 183 soil samples collected from the village of Cafine, Guinea-Bissau, along with accompanying soil texture (Clay, Silt, and Sand) data and Sodium Absorption Ratio (SAR) measurements. The soil texture data is already interpolated with ordinary kriging and using the procedure of the work [Garbanzo et al., 2024](https://doi.org/10.3390/agronomy14020335)). 
+The dataset comprises 183 soil samples collected from the village of Cafine, Guinea-Bissau, along with accompanying soil texture (Clay, Silt, and Sand) data and Sodium Absorption Ratio (SAR) measurements. The soil texture data is already interpolated with ordinary kriging and using the procedure of the work [Garbanzo et al., 2024](https://doi.org/10.3390/agronomy14020335). 
 
-The satellite image will be from a PlanetScope (PS) sensor with 3x3m spatial resolution. For more details visit ([PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/)). The image will correspond to the month of soil sampling (March 2022). The date of acquisition of the image is 2022-05-28. 
+The satellite image will be from a PlanetScope (PS) sensor with a 3x3m spatial resolution. For more details visit ([PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/)). The image will correspond to the month of soil sampling (March 2022). The date of acquisition of the image is 2022-05-28. 
 
 ## Method
 The proposed approach utilizes Convolutional Neural Networks 1-D (CNN-1D) to address these challenges. By employing a buffer to extract satellite data and transforming it into a tabular format for modeling, the method has an important component of soil texture and satellite imagery data.
