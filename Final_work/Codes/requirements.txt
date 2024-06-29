@@ -1,0 +1,13 @@
+geemap
+rasterstats
+geopandas 
+rasterio 
+earthengine-api
+scikit-learn
+treeinterpreter
+google-auth 
+google-auth-oauthlib 
+google-auth-httplib2 
+google-api-python-client
+earthengine-api
+pydrive
