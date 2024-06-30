@@ -13,3 +13,8 @@ earthengine-api
 pydrive
 shapely
 seaborn
+torch
+torchvision
+torchsummary
+random
+torchinfo
