@@ -107,5 +107,4 @@ Los resultados del RF mostraron que, entre los datos de entrada, los datos inter
 
 La distribución espacial del resultado del modelo se muestra en la figura 10, donde es posible observar una buena correspondencia entre los datos de los muestreos de suelo (Figura 10A) y la distribución espacial de la salinidad (Figura 10B).
 
-![Figura 10A: Visualización de los datos puntuales de los muestreos de suelo.](Imagenes_report/Figura10A.png)
-![Figura 10B: Mapeo de la salinidad sobre los índices seleccionados (creados a partir de la imagen PS).](Imagenes_report/Figura10B.png)
+![Figura 10A: Visualización de los datos puntuales de los muestreos de suelo (A).Mapeo de la salinidad sobre los índices seleccionados (creados a partir de la imagen PS)(B).](Imagenes_report/Figura10.png)
