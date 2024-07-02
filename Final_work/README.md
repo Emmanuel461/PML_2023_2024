@@ -12,7 +12,7 @@
 
 **Datos del sensor PlanetScope**: Se descargó la imagen con menor nubosidad del mes de mayo de 2022, específicamente el día 2022-05-28. El sensor PlanetScope (PS) cuenta con una resolución espacial de 3x3m. Para más detalles, visite [PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/).
 
-Posteriormente, se creó una serie de índices de vegetación orientados al mapeo de salinidad (ver [Index_table.md](Tabla_Index_table.md)).
+Posteriormente, se creó una serie de índices de vegetación orientados al mapeo de salinidad (ver [Index_table.md](Markdown_tables/Tabla_Index_table.md)).
 
 **Datos interpolados de textura**: Los datos de arenas, limos y arcillas fueron interpolados mediante kriging ordinario para disponibilizar espacialmente los datos de textura del área de estudio, utilizando el procedimiento del trabajo de [Garbanzo et al. 2024](https://doi.org/10.3390/agronomy14020335).
 
