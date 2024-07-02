@@ -17,7 +17,7 @@ Posteriormente, se creó una serie de índices de vegetación orientados al mape
 
 **Datos interpolados de textura**: Los datos de arenas, limos y arcillas fueron interpolados mediante kriging ordinario para disponibilizar espacialmente los datos de textura del área de estudio, utilizando el procedimiento del trabajo de [Garbanzo et al. 2024](https://doi.org/10.3390/agronomy14020335).
 
-### Descripción de Datos de Muestreo de Razón de Absorción de Sodio (SAR)
+### Descripción de Datos de Muestreo de Razón de Absorción de Sodio (SAR) 
 
 Los datos de SAR muestran condiciones de alta salinidad en el área de estudio, con concentraciones de hasta 200 meq L^-1 (Figura 2).
 
