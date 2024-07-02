@@ -8,7 +8,7 @@
 
 **Muestreos de suelos del área de Cafine, Región de Tombalí, Guinea Bissau**: Se realizaron 183 muestreos de suelos durante mayo de 2022, con una ubicación espacial clara de cada muestreo (Figura 1A y Figura 1B). Para el modelado, se consideraron los datos de la Razón de Absorción de Sodio (SAR).
 
-![Figura 1: Ubicación general del área de estudio (A).Localización y distribución de los muestreos de suelos (B).](Images_report/Figura1.png)](Images_report/Figura1A.png)
+![Figura 1: Ubicación general del área de estudio (A).Localización y distribución de los muestreos de suelos (B).](Images_report/Figura1.png)](Images_report/Figura1.png)
 
 **Datos del sensor PlanetScope**: Se descargó la imagen con menor nubosidad del mes de mayo de 2022, específicamente el día 2022-05-28. El sensor PlanetScope (PS) cuenta con una resolución espacial de 3x3m. Para más detalles, visite [PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/).
 
