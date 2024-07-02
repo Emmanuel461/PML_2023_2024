@@ -2,6 +2,8 @@
 
 # Introducción
 
+The research focuses on the problem of soil salinity in rice production areas within mangroves, specifically in Guinea-Bissau, West Africa. This issue is of paramount importance due to the vital role of rice in the local diet and the significant impact of soil salinity on agricultural productivity in the region ([Balasubramanian et al., 2007](https://doi.org/10.1016/S0065-2113(06)94002-4); [Food and Agriculture Organization of the United Nations, 2018](https://www.fao.org/markets-and-trade/commodities/rice/rmm/en/)). Compounded by unpredictable rainfall patterns and inadequate diagnostic methods, the management of soil salinity poses a considerable challenge, underscoring the urgent need for innovative approaches ([Mendes and Fragoso, 2023](https://doi.org/10.3390/geosciences13020025); [Garbanzo et al., 2024](https://doi.org/10.3390/agronomy14020335)). Leveraging satellite imagery and machine learning algorithms offers a promising solution to address this complex issue and enhance agricultural practices in rice production ([Chuvieco, 2020](https://doi.org/10.1201/9780429506482); [Wu et al., 2018](https://doi.org/10.1002/ldr.3148)).
+
 ## Sección de Datos
 
 ### Fuentes de los Datos
