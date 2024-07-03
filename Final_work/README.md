@@ -1,167 +1,164 @@
 # **Final work report**
 
-# Introducción
+# Introduction
 
 The research focuses on the problem of soil salinity in rice production areas within mangroves, specifically in Guinea-Bissau, West Africa. This issue is of paramount importance due to the vital role of rice in the local diet and the significant impact of soil salinity on agricultural productivity in the region (Balasubramanian et al., 2007; Nations, 2018). Compounded by unpredictable rainfall patterns and inadequate diagnostic methods, the management of soil salinity poses a considerable challenge, underscoring the urgent need for innovative approaches (Garbanzo et al., 2024; Mendes & Fragoso, 2023). Leveraging satellite imagery and machine learning algorithms offers a promising solution to address this complex issue and enhance agricultural practices in rice production (Chuvieco, 2009; Wu et al., 2018).
 
-## Sección de Datos
+## Data Section
 
-### Fuentes de los Datos
+### Data Sources
 
-**Muestreos de suelos del área de Cafine, Región de Tombalí, Guinea Bissau**: Se realizaron 183 muestreos de suelos durante mayo de 2022, con una ubicación espacial clara de cada muestreo (Figura 1A y Figura 1B). Para el modelado, se consideraron los datos de la Razón de Absorción de Sodio (SAR).
+**Soil sampling of the Cafine area, Tombali Region, Guinea Bissau**: 183 soil samplings were conducted during May 2022, with a clear spatial location of each sampling (Figure 1A and Figure 1B). For modeling, Sodium Absorption Ratio (SAR) data were considered.
  
 <p align="center">
   <img src="Images_report/Figura1.png" alt="Figura 1">
   <br>
-  <strong>Figura 1:</strong> Ubicación general del área de estudio (A). Localización y distribución de los muestreos de suelos (B).
+  <strong>Figure 1:</strong>General location of the study area (A). Location and distribution of soil sampling (B).
 </p>
 
+**PlanetScope sensor data**: The image with the lowest cloud cover was downloaded for May 2022, specifically on 2022-05-28. The PlanetScope (PS) sensor has a spatial resolution of 3x3m. For more details, visit [PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/).
 
-**Datos del sensor PlanetScope**: Se descargó la imagen con menor nubosidad del mes de mayo de 2022, específicamente el día 2022-05-28. El sensor PlanetScope (PS) cuenta con una resolución espacial de 3x3m. Para más detalles, visite [PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/).
+Subsequently, a series of salinity mapping-oriented vegetation indices was created (see [Index_table.md](Markdown_tables/Index_table.md)).
 
-Posteriormente, se creó una serie de índices de vegetación orientados al mapeo de salinidad (ver [Index_table.md](Markdown_tables/Index_table.md)).
+**Interpolated texture data**: Sand, silt, and clay data were interpolated by ordinary kriging to spatially make available texture data from the study area, using the procedure from the work of [Garbanzo et al. 2024](https://doi.org/10.3390/agronomy14020335).
 
-**Datos interpolados de textura**: Los datos de arenas, limos y arcillas fueron interpolados mediante kriging ordinario para disponibilizar espacialmente los datos de textura del área de estudio, utilizando el procedimiento del trabajo de [Garbanzo et al. 2024](https://doi.org/10.3390/agronomy14020335).
+### Description of Sodium Absorption Ratio (SAR) Sampling Data
 
-### Descripción de Datos de Muestreo de Razón de Absorción de Sodio (SAR)
+SAR data show high salinity conditions in the study area, with concentrations up to 200 meq L^-1 (Figure 2).
 
-Los datos de SAR muestran condiciones de alta salinidad en el área de estudio, con concentraciones de hasta 200 meq L^-1 (Figura 2).
+<p align="center"<
+ <img src="Images_report/Figure2.png" alt="Figure 2">.
+ <br>
+<strong>Figure 2:</strong> Cumulative SAR soil sampling frequencies for the study area.
+</p>
+
+When correlating the SAR data with the textural variables, a negative relationship with clay of about -0.59 was found (Figure 3).
 
 <p align="center">
-  <img src="Images_report/Figura2.png" alt="Figura 2">
-  <br>
-  <strong>Figura 2:</strong> Frecuencias acumuladas de muestreos de suelos de SAR para el área de estudio.
+ <img src="Images_report/Figure3.png" alt="Figure 3">.
+ <br>
+<strong>Figure 3:</strong> Correlation between SAR data and soil texture.
 </p>
 
-Al correlacionar los datos de SAR con las variables texturales, se descubrió una relación negativa con la arcilla de cerca de -0.59 (Figura 3).
+This trend is shown in the scatterplot of the data grouped thematically by texture type associated with each sampling (Figure 4).
+
+<p align="center"<
+ <img src="Images_report/Figure4.png" alt="Figure 4">.
+ <br>
+<strong>Figure 4:</strong>Spread of SAR data with soil texture.
+</p>
+
+### Selection of Indices for Modeling
+
+For the extraction of the index information, a 6m buffer was applied over the sampling points. Subsequently, the area statistics function was applied to each index to obtain the median of the values of each buffer. This methodology was based on that applied in a similar study by [Wu et al. 2018](https://doi.org/10.1002/ldr.3148).
+
+Once these index data were extracted and correlated with SAR values, those with the 10 highest correlations were selected (Figure 5). Subsequently, considering the indices with similar origin in spectral terms and similar correlations, the YNNDSI, Clay-Raster, YBS2 and RS5_G2 indices were selected to model the data.
 
 <p align="center">
-  <img src="Images_report/Figura3.png" alt="Figura 3">
-  <br>
-  <strong>Figura 3:</strong> Correlación entre los datos de SAR y la textura del suelo.
+ <img src="Images_report/Figure5.png" alt="Figure 5">.
+ <br>
+<strong>Figure 5:</strong> Top 10 highest correlations between vegetation indices and SAR.
 </p>
 
-Esta tendencia se muestra en la figura de dispersión de los datos agrupados temáticamente por tipo de textura asociada a cada muestreo (Figura 4).
+### Data Storage in Google Earth Engine (GEE) and Google Drive
+
+The satellite data and texture interpolated data were stored in GEE to facilitate the process of calculating the vegetation indices and processing them using the Python programming language. This call from GEE was performed using the Earth Engine and [GeeMap](https://geemap.org/) libraries. Subsequently, all the results of these processes stored in Google Drive were called to the local environment using the PyDrive library.
+
+## Data organization
+
+- **Training Set**: Used to train the model.
+- **Validation Set**: Used to adjust the model's hyperparameters and evaluate its performance during training to avoid overfitting.
+- **Test Set**: Used to evaluate the final performance of the model on unseen data.
+
+## Methods.
+
+### CNN (Convolutional Neural Network)
+
+**Architecture**:
+- Input Layer: Number of features equal to the input size.
+- Convolutional Layer: 1D convolution with a kernel size of 3 and 32 filters.
+- Batch Normalization: Applied after the convolutional layer.
+- Activation Function: ReLU.
+- Pooling Layer: MaxPooling with a kernel size of 2.
+- Fully Connected Layers: Three hidden layers with 32 units each followed by batch normalization and ReLU activation.
+- Dropout: Applied with a probability of 0.01.
+- Output Layer: Single neuron for regression output.
+
+**Hyperparameters**:
+- Apprenticeship Rate: 0.1
+- Epochs: 50
+- Batch Size: 32
+- Optimizer: Adagrad
+- Loss Function: Smooth L1 Loss
+- Regularization: 0.1 % weight decay.
+
+### RF (Random Forest Regressor).
+
+**Architecture**:
+- Number of Trees (Estimators): 100
+- Criterion: Squared error
+- Minimum Number of Samples to Split: 2
+- Random State: 27
+
+**Hyperparameters**:.
+- Scaler: StandardScaler for feature normalization.
+- Random State: 65 for training-test splitting.
+- Evaluation Metrics: R2 Score, Mean Absolute Error (MAE), Root Mean Square Error (RMSE), Pearson's Correlation.
+
+In this RF modeling process, the scaler result was saved during the training process to ensure consistency between training data and prediction data. The standardization method `StandardScaler` from the `scikit-learn` library was used. This scaler was saved and subsequently applied to the input raster before predictions were made, ensuring that the raster features were transformed consistently with the training data, which is crucial for model accuracy (Pedregosa et al. 2011).
+
+The choice of architecture for CNN-1D involved testing different hidden layers and nodes per iteration and running the model. Similarly, in the case of the RF, different parameters and number of estimators were tested in order to observe the behavior of the model and its performance (it was run starting at 50 trees and going up to 1000 using an interval of 50 trees). Different optimizers such as SGD, Adam, RMSProp, Rprop, among others, were also tested, determining that Adagrad showed the best results. Given the range of high values in the input data (Figure 2), Adagrad adjusts the learning rate for each parameter individually, assigning a higher rate to parameters with less frequent gradients and a lower rate to those with more frequent gradients (Duchi et al. 2012), which could explain its better performance.
+
+## Results
+
+The results of the RF model on the test set (20% of the samples) show a predictive ability of 62% according to the regression coefficient, with Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) values of 22.58 and 29.11 respectively, which is acceptable given the high salinity conditions and the range of data in the study area (Figure 6).
 
 <p align="center">
-  <img src="Images_report/Figura4.png" alt="Figura 4">
-  <br>
-  <strong>Figura 4:</strong> Dispersión de los datos de SAR con relación a la textura del suelo.
+ <img src="Images_report/Figure6.png" alt="Figure 6">.
+ <br>
+<strong>Figure 6:</strong>Regression between observed and predicted values of SAR values for test data.
 </p>
 
-
-### Selección de los Índices para Modelado
-
-Para la extracción de la información de los índices, se aplicó un buffer de 6m sobre los puntos de muestreo. Posteriormente, se aplicó la función de estadísticas de área a cada índice para obtener la mediana de los valores de cada buffer. Esta metodología se basó en lo aplicado en un estudio similar por [Wu et al. 2018](https://doi.org/10.1002/ldr.3148).
-
-Una vez extraídos estos datos de los índices y correlacionados con los valores de SAR, se seleccionaron aquellos con las 10 correlaciones más altas (Figura 5). Posteriormente, considerando los índices con origen similar en términos espectrales y correlaciones similares, se seleccionaron los índices YNNDSI, Clay-Raster, YBS2 y RS5_G2 para modelar los datos.
+Evaluating the model on all observed data, equally acceptable behavior is observed with good predictive ability and lower RMSE and MAE errors comparatively to the test data (Figure 7).
 
 <p align="center">
-  <img src="Images_report/Figura5.png" alt="Figura 5">
-  <br>
-  <strong>Figura 5:</strong> Top de las 10 correlaciones más altas entre índices de vegetación y SAR.
+ <img src="Images_report/Figure7.png" alt="Figure 7">.
+ <br>
+<strong>Figure 7:</strong>Regression between observed and predicted values of SAR values for all data.
 </p>
 
-### Almacenamiento de los Datos en Google Earth Engine (GEE) y Google Drive
-
-Los datos satelitales y los datos interpolados de textura fueron almacenados en GEE para facilitar el proceso de cálculo de los índices de vegetación y su procesamiento mediante el lenguaje de programación Python. Este llamado desde GEE se realizó mediante las librerías de Earth Engine y [GeeMap](https://geemap.org/). Posteriormente, todos los resultados de estos procesos almacenados en Google Drive fueron llamados al entorno local mediante la librería PyDrive.
-
-## Organización de Datos
-
-- **Conjunto de Entrenamiento**: Utilizado para entrenar el modelo.
-- **Conjunto de Validación**: Utilizado para ajustar los hiperparámetros del modelo y evaluar su rendimiento durante el entrenamiento para evitar el sobreajuste.
-- **Conjunto de Prueba**: Utilizado para evaluar el rendimiento final del modelo en datos no vistos.
-
-## Métodos
-
-### CNN (Red Neuronal Convolucional)
-
-**Arquitectura**:
-- Capa de Entrada: Número de características igual al tamaño de la entrada.
-- Capa Convolucional: Convolución 1D con un tamaño de kernel de 3 y 32 filtros.
-- Normalización por Lotes: Aplicada después de la capa convolucional.
-- Función de Activación: ReLU.
-- Capa de Agrupamiento (Pooling): MaxPooling con un tamaño de kernel de 2.
-- Capas Completamente Conectadas: Tres capas ocultas con 32 unidades cada una seguidas de normalización por lotes y activación ReLU.
-- Dropout: Aplicado con una probabilidad de 0.01.
-- Capa de Salida: Una sola neurona para salida de regresión.
-
-**Hiperparámetros**:
-- Tasa de Aprendizaje: 0.1
-- Épocas: 50
-- Tamaño de Lote: 32
-- Optimizador: Adagrad
-- Función de Pérdida: Smooth L1 Loss
-- Regularización: Decaimiento de pesos de 0.1
-
-### RF (Regresor de Bosque Aleatorio)
-
-**Arquitectura**:
-- Número de Árboles (Estimadores): 100
-- Criterio: Error cuadrado
-- Mínimo de Muestras para Dividir: 2
-- Estado Aleatorio: 27
-
-**Hiperparámetros**:
-- Escalador: StandardScaler para normalización de características
-- Estado Aleatorio: 65 para la división de entrenamiento-prueba
-- Métricas de Evaluación: R2 Score, Error Absoluto Medio (MAE), Error Cuadrático Medio (RMSE), Correlación de Pearson
-
-En este proceso de modelado de RF, se guardó el resultado del escalador durante el proceso de entrenamiento para garantizar la consistencia entre los datos de entrenamiento y los datos de predicción. Se utilizó el método de estandarización `StandardScaler` de la biblioteca `scikit-learn`. Este escalador fue guardado y posteriormente aplicado al raster de entrada antes de realizar las predicciones, asegurando que las características del raster sean transformadas de manera consistente con los datos de entrenamiento, lo cual es crucial para la precisión del modelo (Pedregosa et al. 2011).
-
-La elección de la arquitectura para la CNN-1D involucró probar diferentes capas ocultas y nodos por iteración, y ejecutando el modelo. De igual forma, en el caso del RF, se probaron diferentes parámetros y número de estimadores con el fin de observar el comportamiento del modelo y su rendimiento (se ejecutó iniciando en 50 árboles y llegando hasta 1000 usando un intervalo de 50 árboles). También se probaron diferentes optimizadores como SGD, Adam, RMSProp, Rprop, entre otros, determinando que Adagrad mostró los mejores resultados. Dado el rango de valores altos en los datos de entrada (Figura 2), Adagrad ajusta la tasa de aprendizaje para cada parámetro de manera individual, asignando una tasa más alta a los parámetros con gradientes menos frecuentes y una tasa más baja a aquellos con gradientes más frecuentes (Duchi et al. 2012), lo que podría explicar su mejor rendimiento.
-
-## Resultados
-
-Los resultados del modelo RF sobre el conjunto de prueba (20% de los muestreos) muestran una capacidad de predicción del 62% según el coeficiente de regresión, con valores de Error Medio Absoluto (MAE) y Raíz Media Cuadrático del Error (RMSE) de 22.58 y 29.11 respectivamente, lo cual es aceptable dadas las condiciones de alta salinidad y el rango de datos en el área de estudio (Figura 6).
+The prediction on the spatial raster data (with the indices selected in 2.3) shows a regression coefficient of 59% and comparatively higher RMSE and MAE values than those in Figures 6 and 7, but still within an acceptable range. Spatially, it shows correspondence between sampling and observed field experience ('bolahna' salty and sweet) (Figure 8).
 
 <p align="center">
-  <img src="Images_report/Figura6.png" alt="Figura 6">
-  <br>
-  <strong>Figura 6:</strong> Regresión entre los valores observados y predichos de los valores de SAR para los datos de prueba.
+ <img src="Images_report/Figure8.png" alt="Figure 8">.
+ <br>
+<strong>Figure 8:</strong> Regression between observed and predicted values on raster data of SAR values for all data.
 </p>
 
-Al evaluar el modelo en todos los datos observados, se observa un comportamiento igualmente aceptable con una buena capacidad predictiva y errores de RMSE y MAE menores comparativamente con los datos de prueba (Figura 7).
+The RF results showed that, among the input data, the textural interpolated data of clays contributed the most in the model (Figure 9), followed by RS5_G2 (created using the blue, red edge and green bands), YNNDSI (created using the red and yellow bands) and YBS2 (created with the yellow and red bands in a normalized index).
 
 <p align="center">
-  <img src="Images_report/Figura7.png" alt="Figura 7">
-  <br>
-  <strong>Figura 7:</strong> Regresión entre los valores observados y predichos de los valores de SAR para todos los datos.
+ <img src="Images_report/Figure9.png" alt="Figure 9">.
+ <br>
+<strong>Figure 9:</strong>Importances of the input variables in the RF model.
 </p>
 
-La predicción sobre los datos espaciales del raster (con los índices seleccionados en el punto 2.3) muestra un coeficiente de regresión de 59% y valores de RMSE y MAE comparativamente más altos que los de las figuras 6 y 7, pero aún dentro de un rango aceptable. Espacialmente, muestra correspondencia entre los muestreos y la experiencia observada en campo (‘bolahna’ salada y dulce) (Figura 8).
+The spatial distribution of the model output is shown in Figure 10, where it is possible to observe a good correspondence between the soil sampling data (Figure 10A) and the spatial distribution of salinity (Figure 10B).
 
 <p align="center">
-  <img src="Images_report/Figura8.png" alt="Figura 8">
-  <br>
-  <strong>Figura 8:</strong> Regresión entre los valores observados y predichos sobre los datos del raster de los valores de SAR para todos los datos.
+ <img src="Images_report/Figure10.png" alt="Figure 10">.
+ <br>
+<strong>Figure 10:</strong>Display of point data from soil sampling (A). Mapping of salinity over selected indices (created from PS image)(B).
 </p>
 
-Los resultados del RF mostraron que, entre los datos de entrada, los datos interpolados texturales de arcillas son los que más contribuyen en el modelo (Figura 9), seguidos del RS5_G2 (creado utilizando las bandas azul, borde rojo y verde), YNNDSI (creado utilizando las bandas roja y amarilla) y YBS2 (creado con las bandas amarilla y roja en un índice normalizado).
+## Analysis
+The results show that the RSG5_G2 index, derived from satellite data, was one of the most important in the Random Forest (RF) modeling (Figure 9). In addition, it presented a moderate correlation with electrical conductivity (EC) (Figure 5). This agrees with the research of Tan et al. (2023), which highlights the indices and the red-edge spectral band as relevant for predicting soil salinity. This same pattern is observed in the yellow band used in the YNNDSI.
 
-<p align="center">
-  <img src="Images_report/Figura9.png" alt="Figura 9">
-  <br>
-  <strong>Figura 9:</strong> Importancias de las variables de entrada en el modelo de RF.
-</p>
+Soil texture is one of the factors included in this study and showed a great influence on both data correlation and modeling. This agrees with Fourati et al. (2017), who mention soil texture as one of the aspects most related to the spatial distribution of soil salinity.
 
-La distribución espacial del resultado del modelo se muestra en la figura 10, donde es posible observar una buena correspondencia entre los datos de los muestreos de suelo (Figura 10A) y la distribución espacial de la salinidad (Figura 10B).
+Regarding the coefficient of determination (R²) results, considering a study with the same satellite sensor (PlaneScope), the values obtained during the test phase were approximately 62%. These results are like those reported by Tan et al. (2023), with an R² of 56%. Similarly, Naimi et al. (2021) obtained accuracies around 48%, and Mzid et al. (2023) reported an R² close to 67%. These studies agree that the RF method is an effective method for soil salinity mapping.
 
-
-<p align="center">
-  <img src="Images_report/Figura10.png" alt="Figura 10">
-  <br>
-  <strong>Figura 10:</strong> Figura 10: Visualización de los datos puntuales de los muestreos de suelo (A).Mapeo de la salinidad sobre los índices seleccionados (creados a partir de la imagen PS)(B).
-</p>
-
-## Análisis 
-Los resultados muestran que el índice RSG5_G2, derivado de datos satelitales, fue uno de los más importantes en el modelado con Random Forest (RF) (Figura 9). Además, presentó una correlación moderada con la conductividad eléctrica (CE) (Figura 5). Esto coincide con la investigación de Tan et al. (2023), que destaca los índices y la banda espectral del borde rojo como relevantes para predecir la salinidad del suelo. Este mismo patrón se observa en la banda amarilla utilizada en el YNNDSI.
-
-La textura de los suelos es uno de los factores incluidos en este estudio y mostró una gran influencia tanto en la correlación de los datos como en el modelado. Esto concuerda con lo señalado por Fourati et al. (2017), quien menciona la textura del suelo como uno de los aspectos más relacionados con la distribución espacial de la salinidad del suelo.
-
-En cuanto a los resultados del coeficiente de determinación (R²), considerando un estudio con el mismo sensor satelital (PlaneScope), los valores obtenidos en este estudio durante la fase de prueba fueron de aproximadamente 62%. Estos resultados son similares a los reportados por Tan et al. (2023), con un R² de 56%. De manera similar, Naimi et al. (2021) obtuvieron precisiones alrededor del 48%, y Mzid et al. (2023) reportaron un R² cercano al 67%. Estos estudios coinciden en que el método RF ha mostrado ser el más efectivo para el mapeo de la salinidad del suelo.
-
-## Referencias
+## References
 
 - Balasubramanian, V., Sie, M., Hijmans, R. J., & Otsuka, K. (2007). Increasing Rice Production in Sub-Saharan Africa: Challenges and Opportunities. Advances in Agronomy, 94, 55–133. [https://doi.org/10.1016/S0065-2113(06)94002-4](https://doi.org/10.1016/S0065-2113(06)94002-4)
 - Chuvieco, E.(2009). Fundamentals of satellite remote sensing. In Fundamentals of Satellite Remote Sensing. [https://doi.org/10.1201/b18954](https://doi.org/10.1201/b18954)
