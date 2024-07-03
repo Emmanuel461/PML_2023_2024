@@ -18,7 +18,7 @@ The research focuses on the problem of soil salinity in rice production areas wi
 
 **PlanetScope sensor data**: The image with the lowest cloud cover was downloaded for May 2022, specifically on 2022-05-28. The PlanetScope (PS) sensor has a spatial resolution of 3x3m. For more details, visit [PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/).
 
-Subsequently, a series of salinity mapping-oriented vegetation indices was created (see [Index_table.md](Markdown_tables/Index_table.md)).
+Subsequently, a series of salinity mapping-oriented indices was created (see [Index_table.md](Markdown_tables/Index_table.md)).
 
 **Interpolated texture data**: Sand, silt, and clay data were interpolated by ordinary kriging to spatially make available texture data from the study area, using the procedure from the work of Garbanzo et al. (2024).
 
