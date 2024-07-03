@@ -110,3 +110,19 @@ Los resultados del RF mostraron que, entre los datos de entrada, los datos inter
 La distribución espacial del resultado del modelo se muestra en la figura 10, donde es posible observar una buena correspondencia entre los datos de los muestreos de suelo (Figura 10A) y la distribución espacial de la salinidad (Figura 10B).
 
 ![Figura 10: Visualización de los datos puntuales de los muestreos de suelo (A).Mapeo de la salinidad sobre los índices seleccionados (creados a partir de la imagen PS)(B).](Images_report/Figura10.png)
+
+## Análisis 
+Los resultados muestran que el índice RSG5_G2, derivado de datos satelitales, fue uno de los más importantes en el modelado con Random Forest (RF) (Figura 9). Además, presentó una correlación moderada con la conductividad eléctrica (CE) (Figura 5). Esto coincide con la investigación de Tan et al. (2023), que destaca los índices y la banda espectral del borde rojo como relevantes para predecir la salinidad del suelo. Este mismo patrón se observa en la banda amarilla utilizada en el YNNDSI.
+
+La textura de los suelos es uno de los factores incluidos en este estudio y mostró una gran influencia tanto en la correlación de los datos como en el modelado. Esto concuerda con lo señalado por Fourati et al. (2017), quien menciona la textura del suelo como uno de los aspectos más relacionados con la distribución espacial de la salinidad del suelo.
+
+En cuanto a los resultados del coeficiente de determinación (R²), considerando un estudio con el mismo sensor satelital (PlaneScope), los valores obtenidos en este estudio durante la fase de prueba fueron de aproximadamente 62%. Estos resultados son similares a los reportados por Tan et al. (2023), con un R² de 56%. De manera similar, Naimi et al. (2021) obtuvieron precisiones alrededor del 48%, y Mzid et al. (2023) reportaron un R² cercano al 67%. Estos estudios coinciden en que el método RF ha mostrado ser el más efectivo para el mapeo de la salinidad del suelo.
+
+## Referencias
+
+- Duchi, J. C., Bartlett, P. L., & Wainwright, M. J. (2012). Randomized smoothing for (parallel) stochastic optimization. Proceedings of the IEEE Conference on Decision and Control, 12, 5442–5444. [https://doi.org/10.1109/CDC.2012.6426698](https://doi.org/10.1109/CDC.2012.6426698)
+- Fourati, H. T., Bouaziz, M., & Benzina, M. (2017). Detection of terrain indices related to soil salinity and mapping salt-affected soils using remote sensing and geostatistical techniques. [https://doi.org/10.1007/s10661-017-5877-7](https://doi.org/10.1007/s10661-017-5877-7)
+- Mzid, N., Boussadia, O., Albrizio, R., Stellacci, A. M., Braham, M., & Todorovic, M. (2023). Salinity Properties Retrieval from Sentinel-2 Satellite Data and Machine Learning Algorithms. Agronomy, 13(3), 1–19. [https://doi.org/10.3390/agronomy13030716](https://doi.org/10.3390/agronomy13030716)
+- Naimi, S., Ayoubi, S., Zeraatpisheh, M., & Dematte, J. A. M. (2021). Ground observations and environmental covariates integration for mapping of soil salinity: A machine learning-based approach. Remote Sensing, 13(23), 1–21. [https://doi.org/10.3390/rs13234825](https://doi.org/10.3390/rs13234825)
+- Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., & Cournapeau, D. (2011). Scikit-learn: Machine Learning in Python Fabian. Journal of Machine Learning Research, 12(9), 2825–2830.
+- Tan, J., Ding, J., Han, L., Ge, X., Wang, X., Wang, J., Wang, R., Qin, S., Zhang, Z., & Li, Y. (2023). Exploring PlanetScope Satellite Capabilities for Soil Salinity Estimation and Mapping in Arid Regions Oases.
