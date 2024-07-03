@@ -50,7 +50,7 @@ This trend is shown in the scatterplot of the data grouped thematically by textu
 
 ### Selection of Indices for Modeling
 
-For the extraction of the index information, a 6m buffer was applied over the sampling points. Subsequently, the area statistics function was applied to each index to obtain the median of the values of each buffer. This methodology was based on that applied in a similar study by [Wu et al. 2018](https://doi.org/10.1002/ldr.3148).
+For the extraction of the index information, a 6m buffer was applied over the sampling points. Subsequently, the area statistics function was applied to each index to obtain the median of the values of each buffer. This methodology was based on that applied in a similar study by Wu et al. (2018).
 
 Once these index data were extracted and correlated with SAR values, those with the 10 highest correlations were selected (Figure 5). Subsequently, considering the indices with similar origin in spectral terms and similar correlations, the YNNDSI, Clay-Raster, YBS2 and RS5_G2 indices were selected to model the data.
 
