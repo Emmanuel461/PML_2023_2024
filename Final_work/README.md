@@ -20,7 +20,7 @@ The research focuses on the problem of soil salinity in rice production areas wi
 
 Subsequently, a series of salinity mapping-oriented vegetation indices was created (see [Index_table.md](Markdown_tables/Index_table.md)).
 
-**Interpolated texture data**: Sand, silt, and clay data were interpolated by ordinary kriging to spatially make available texture data from the study area, using the procedure from the work of [Garbanzo et al. 2024](https://doi.org/10.3390/agronomy14020335).
+**Interpolated texture data**: Sand, silt, and clay data were interpolated by ordinary kriging to spatially make available texture data from the study area, using the procedure from the work of Garbanzo et al. (2024).
 
 ### Description of Sodium Absorption Ratio (SAR) Sampling Data
 
