@@ -27,15 +27,28 @@ Posteriormente, se creó una serie de índices de vegetación orientados al mape
 
 Los datos de SAR muestran condiciones de alta salinidad en el área de estudio, con concentraciones de hasta 200 meq L^-1 (Figura 2).
 
-![Figura 2: Frecuencias acumuladas de muestreos de suelos de SAR para el área de estudio.](Images_report/Figura2.png)
+<p align="center">
+  <img src="Images_report/Figura2.png" alt="Figura 2">
+  <br>
+  <strong>Figura 2:</strong> Frecuencias acumuladas de muestreos de suelos de SAR para el área de estudio.
+</p>
 
 Al correlacionar los datos de SAR con las variables texturales, se descubrió una relación negativa con la arcilla de cerca de -0.59 (Figura 3).
 
-![Figura 3: Correlación entre los datos de SAR y la textura del suelo.](Images_report/Figura3.png)
+<p align="center">
+  <img src="Images_report/Figura3.png" alt="Figura 3">
+  <br>
+  <strong>Figura 3:</strong> Correlación entre los datos de SAR y la textura del suelo.
+</p>
 
 Esta tendencia se muestra en la figura de dispersión de los datos agrupados temáticamente por tipo de textura asociada a cada muestreo (Figura 4).
 
-![Figura 4: Dispersión de los datos de SAR con relación a la textura del suelo.](Images_report/Figura4.png)
+<p align="center">
+  <img src="Images_report/Figura4.png" alt="Figura 4">
+  <br>
+  <strong>Figura 4:</strong> Dispersión de los datos de SAR con relación a la textura del suelo.
+</p>
+
 
 ### Selección de los Índices para Modelado
 
@@ -43,7 +56,11 @@ Para la extracción de la información de los índices, se aplicó un buffer de 
 
 Una vez extraídos estos datos de los índices y correlacionados con los valores de SAR, se seleccionaron aquellos con las 10 correlaciones más altas (Figura 5). Posteriormente, considerando los índices con origen similar en términos espectrales y correlaciones similares, se seleccionaron los índices YNNDSI, Clay-Raster, YBS2 y RS5_G2 para modelar los datos.
 
-![Figura 5: Top de las 10 correlaciones más altas entre índices de vegetación y SAR.](Images_report/Figura5.png)
+<p align="center">
+  <img src="Images_report/Figura5.png" alt="Figura 5">
+  <br>
+  <strong>Figura 5:</strong> Top de las 10 correlaciones más altas entre índices de vegetación y SAR.
+</p>
 
 ### Almacenamiento de los Datos en Google Earth Engine (GEE) y Google Drive
 
@@ -98,23 +115,44 @@ La elección de la arquitectura para la CNN-1D involucró probar diferentes capa
 
 Los resultados del modelo RF sobre el conjunto de prueba (20% de los muestreos) muestran una capacidad de predicción del 62% según el coeficiente de regresión, con valores de Error Medio Absoluto (MAE) y Raíz Media Cuadrático del Error (RMSE) de 22.58 y 29.11 respectivamente, lo cual es aceptable dadas las condiciones de alta salinidad y el rango de datos en el área de estudio (Figura 6).
 
-![Figura 6: Regresión entre los valores observados y predichos de los valores de SAR para los datos de prueba.](Images_report/Figura6.png)
+<p align="center">
+  <img src="Images_report/Figura6.png" alt="Figura 6">
+  <br>
+  <strong>Figura 6:</strong> Regresión entre los valores observados y predichos de los valores de SAR para los datos de prueba.
+</p>
 
 Al evaluar el modelo en todos los datos observados, se observa un comportamiento igualmente aceptable con una buena capacidad predictiva y errores de RMSE y MAE menores comparativamente con los datos de prueba (Figura 7).
 
-![Figura 7: Regresión entre los valores observados y predichos de los valores de SAR para todos los datos.](Images_report/Figura7.png)
+<p align="center">
+  <img src="Images_report/Figura7.png" alt="Figura 7">
+  <br>
+  <strong>Figura 7:</strong> Regresión entre los valores observados y predichos de los valores de SAR para todos los datos.
+</p>
 
 La predicción sobre los datos espaciales del raster (con los índices seleccionados en el punto 2.3) muestra un coeficiente de regresión de 59% y valores de RMSE y MAE comparativamente más altos que los de las figuras 6 y 7, pero aún dentro de un rango aceptable. Espacialmente, muestra correspondencia entre los muestreos y la experiencia observada en campo (‘bolahna’ salada y dulce) (Figura 8).
 
-![Figura 8: Regresión entre los valores observados y predichos sobre los datos del raster de los valores de SAR para todos los datos.](Images_report/Figura8.png)
+<p align="center">
+  <img src="Images_report/Figura8.png" alt="Figura 8">
+  <br>
+  <strong>Figura 8:</strong> Regresión entre los valores observados y predichos sobre los datos del raster de los valores de SAR para todos los datos.
+</p>
 
 Los resultados del RF mostraron que, entre los datos de entrada, los datos interpolados texturales de arcillas son los que más contribuyen en el modelo (Figura 9), seguidos del RS5_G2 (creado utilizando las bandas azul, borde rojo y verde), YNNDSI (creado utilizando las bandas roja y amarilla) y YBS2 (creado con las bandas amarilla y roja en un índice normalizado).
 
-![Figura 9: Importancias de las variables de entrada en el modelo de RF.](Images_report/Figura9.png)
+<p align="center">
+  <img src="Images_report/Figura9.png" alt="Figura 9">
+  <br>
+  <strong>Figura 9:</strong> Importancias de las variables de entrada en el modelo de RF.
+</p>
 
 La distribución espacial del resultado del modelo se muestra en la figura 10, donde es posible observar una buena correspondencia entre los datos de los muestreos de suelo (Figura 10A) y la distribución espacial de la salinidad (Figura 10B).
 
-![Figura 10: Visualización de los datos puntuales de los muestreos de suelo (A).Mapeo de la salinidad sobre los índices seleccionados (creados a partir de la imagen PS)(B).](Images_report/Figura10.png)
+
+<p align="center">
+  <img src="Images_report/Figura10.png" alt="Figura 10">
+  <br>
+  <strong>Figura 10:</strong> Figura 10: Visualización de los datos puntuales de los muestreos de suelo (A).Mapeo de la salinidad sobre los índices seleccionados (creados a partir de la imagen PS)(B).
+</p>
 
 ## Análisis 
 Los resultados muestran que el índice RSG5_G2, derivado de datos satelitales, fue uno de los más importantes en el modelado con Random Forest (RF) (Figura 9). Además, presentó una correlación moderada con la conductividad eléctrica (CE) (Figura 5). Esto coincide con la investigación de Tan et al. (2023), que destaca los índices y la banda espectral del borde rojo como relevantes para predecir la salinidad del suelo. Este mismo patrón se observa en la banda amarilla utilizada en el YNNDSI.
