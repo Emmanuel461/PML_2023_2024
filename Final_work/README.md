@@ -13,7 +13,7 @@ The research focuses on the problem of soil salinity in rice production areas wi
 <p align="center">
   <img src="Images_report/Figura1.png" alt="Figura 1">
   <br>
-  <strong>Figure 1:</strong>General location of the study area (A). Location and distribution of soil sampling (B).
+  <strong>Figure 1:</strong> General location of the study area (A). Location and distribution of soil sampling (B).
 </p>
 
 **PlanetScope sensor data**: The image with the lowest cloud cover was downloaded for May 2022, specifically on 2022-05-28. The PlanetScope (PS) sensor has a spatial resolution of 3x3m. For more details, visit [PlanetScope Bands](https://developers.planet.com/docs/apis/data/sensors/).
@@ -27,7 +27,7 @@ Subsequently, a series of salinity mapping-oriented vegetation indices was creat
 SAR data show high salinity conditions in the study area, with concentrations up to 200 meq L^-1 (Figure 2).
 
 <p align="center"<
- <img src="Images_report/Figure2.png" alt="Figure 2">.
+ <img src="Images_report/Figura2.png" alt="Figure 2">.
  <br>
 <strong>Figure 2:</strong> Cumulative SAR soil sampling frequencies for the study area.
 </p>
@@ -35,7 +35,7 @@ SAR data show high salinity conditions in the study area, with concentrations up
 When correlating the SAR data with the textural variables, a negative relationship with clay of about -0.59 was found (Figure 3).
 
 <p align="center">
- <img src="Images_report/Figure3.png" alt="Figure 3">.
+ <img src="Images_report/Figura3.png" alt="Figure 3">.
  <br>
 <strong>Figure 3:</strong> Correlation between SAR data and soil texture.
 </p>
@@ -43,7 +43,7 @@ When correlating the SAR data with the textural variables, a negative relationsh
 This trend is shown in the scatterplot of the data grouped thematically by texture type associated with each sampling (Figure 4).
 
 <p align="center"<
- <img src="Images_report/Figure4.png" alt="Figure 4">.
+ <img src="Images_report/Figura4.png" alt="Figure 4">.
  <br>
 <strong>Figure 4:</strong>Spread of SAR data with soil texture.
 </p>
@@ -55,7 +55,7 @@ For the extraction of the index information, a 6m buffer was applied over the sa
 Once these index data were extracted and correlated with SAR values, those with the 10 highest correlations were selected (Figure 5). Subsequently, considering the indices with similar origin in spectral terms and similar correlations, the YNNDSI, Clay-Raster, YBS2 and RS5_G2 indices were selected to model the data.
 
 <p align="center">
- <img src="Images_report/Figure5.png" alt="Figure 5">.
+ <img src="Images_report/Figura5.png" alt="Figure 5">.
  <br>
 <strong>Figure 5:</strong> Top 10 highest correlations between vegetation indices and SAR.
 </p>
@@ -114,7 +114,7 @@ The choice of architecture for CNN-1D involved testing different hidden layers a
 The results of the RF model on the test set (20% of the samples) show a predictive ability of 62% according to the regression coefficient, with Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) values of 22.58 and 29.11 respectively, which is acceptable given the high salinity conditions and the range of data in the study area (Figure 6).
 
 <p align="center">
- <img src="Images_report/Figure6.png" alt="Figure 6">.
+ <img src="Images_report/Figura6.png" alt="Figure 6">.
  <br>
 <strong>Figure 6:</strong>Regression between observed and predicted values of SAR values for test data.
 </p>
@@ -122,7 +122,7 @@ The results of the RF model on the test set (20% of the samples) show a predicti
 Evaluating the model on all observed data, equally acceptable behavior is observed with good predictive ability and lower RMSE and MAE errors comparatively to the test data (Figure 7).
 
 <p align="center">
- <img src="Images_report/Figure7.png" alt="Figure 7">.
+ <img src="Images_report/Figura7.png" alt="Figure 7">.
  <br>
 <strong>Figure 7:</strong>Regression between observed and predicted values of SAR values for all data.
 </p>
@@ -130,7 +130,7 @@ Evaluating the model on all observed data, equally acceptable behavior is observ
 The prediction on the spatial raster data (with the indices selected in 2.3) shows a regression coefficient of 59% and comparatively higher RMSE and MAE values than those in Figures 6 and 7, but still within an acceptable range. Spatially, it shows correspondence between sampling and observed field experience ('bolahna' salty and sweet) (Figure 8).
 
 <p align="center">
- <img src="Images_report/Figure8.png" alt="Figure 8">.
+ <img src="Images_report/Figura8.png" alt="Figure 8">.
  <br>
 <strong>Figure 8:</strong> Regression between observed and predicted values on raster data of SAR values for all data.
 </p>
@@ -138,7 +138,7 @@ The prediction on the spatial raster data (with the indices selected in 2.3) sho
 The RF results showed that, among the input data, the textural interpolated data of clays contributed the most in the model (Figure 9), followed by RS5_G2 (created using the blue, red edge and green bands), YNNDSI (created using the red and yellow bands) and YBS2 (created with the yellow and red bands in a normalized index).
 
 <p align="center">
- <img src="Images_report/Figure9.png" alt="Figure 9">.
+ <img src="Images_report/Figura9.png" alt="Figure 9">.
  <br>
 <strong>Figure 9:</strong>Importances of the input variables in the RF model.
 </p>
@@ -146,7 +146,7 @@ The RF results showed that, among the input data, the textural interpolated data
 The spatial distribution of the model output is shown in Figure 10, where it is possible to observe a good correspondence between the soil sampling data (Figure 10A) and the spatial distribution of salinity (Figure 10B).
 
 <p align="center">
- <img src="Images_report/Figure10.png" alt="Figure 10">.
+ <img src="Images_report/Figura10.png" alt="Figure 10">.
  <br>
 <strong>Figure 10:</strong>Display of point data from soil sampling (A). Mapping of salinity over selected indices (created from PS image)(B).
 </p>
