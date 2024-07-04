@@ -76,8 +76,8 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 ### CNN (Convolutional Neural Network)
 
 **Architecture**:
-- Input Layer: Number of features equal to the input size.
-- Convolutional Layer: 1D convolution with a kernel size of 3 and 32 filters.
+- Input Layer: Number of features equal to the input size (4 selected index).
+- Convolutional Layer: 1D convolution with a kernel size of 3 and 32 filters (considering a dataframe not a image as input).
 - Batch Normalization: Applied after the convolutional layer.
 - Activation Function: ReLU.
 - Pooling Layer: MaxPooling with a kernel size of 2.
@@ -99,7 +99,7 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 - Number of Trees (Estimators): 100
 - Criterion: Squared error
 - Minimum Number of Samples to Split: 2
-- Random State: 42
+- Random State: 42, for controls both the randomness of the bootstrapping of the samples used when building trees and the sampling of the features to consider when looking for the best split at each node.
 
 **Hyperparameters**:.
 - Scaler: StandardScaler for feature normalization.
