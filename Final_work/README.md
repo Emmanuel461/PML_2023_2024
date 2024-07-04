@@ -99,7 +99,7 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 - Number of Trees (Estimators): 100
 - Criterion: Squared error
 - Minimum Number of Samples to Split: 2
-- Random State: 27
+- Random State: 42
 
 **Hyperparameters**:.
 - Scaler: StandardScaler for feature normalization.
@@ -108,7 +108,7 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 
 In this RF modeling process, the scaler result was saved during the training process to ensure consistency between training data and prediction data. The standardization method `StandardScaler` from the `scikit-learn` library was used. This scaler was saved and subsequently applied to the input raster before predictions were made, ensuring that the raster features were transformed consistently with the training data, which is crucial for model accuracy (Pedregosa et al. 2011).
 
-The choice of architecture for CNN-1D involved testing different hidden layers and nodes per iteration and running the model. Similarly, in the case of the RF, different parameters and the number of estimators were tested in order to observe the behavior of the model and its performance (it was run starting at 50 trees and going up to 1000 using an interval of 50 trees). Different optimizers such as SGD, Adam, RMSProp, Rprop, among others, were also tested, determining that Adagrad showed the best results. Given the range of high values in the input data (Figure 2), Adagrad adjusts the learning rate for each parameter individually, assigning a higher rate to parameters with less frequent gradients and a lower rate to those with more frequent gradients (Duchi et al. 2012), which could explain its better performance considering the high range of the SAR data.
+The choice of architecture for CNN-1D involved testing different hidden layers and nodes per iteration and running the model. Similarly, in the case of the RF, different parameters and the number of estimators were tested to observe the behavior of the model and its performance (it was run starting at 50 trees and going up to 1000 using an interval of 50 trees). Different optimizers such as SGD, Adam, RMSProp, Rprop, among others, were also tested, determining that Adagrad showed the best results. Given the range of high values in the input data (Figure 2), Adagrad adjusts the learning rate for each parameter individually, assigning a higher rate to parameters with less frequent gradients and a lower rate to those with more frequent gradients (Duchi et al. 2012), which could explain its better performance considering the high range of the SAR data.
 
 ## Results
 
@@ -117,15 +117,15 @@ The results of the RF model on the test set (20% of the samples) show a predicti
 <p align="center">
  <img src="Images_report/Figura6.png" alt="Figure 6">
  <br>
-<strong>Figure 6:</strong> Regression between observed and predicted values of SAR values for test data.
+<strong>Figure 6:</strong> Regression between observed and predicted SAR values for test data.
 </p>
 
-Evaluating the model on all observed data, equally acceptable behavior is observed with good predictive ability and lower RMSE and MAE errors compared to the test data (Figure 7).
+Evaluating the model on all observed data, equally acceptable behavior is observed with good predictive ability and lower RMSE and MAE errors compared with the test data (Figure 7).
 
 <p align="center">
  <img src="Images_report/Figura7.png" alt="Figure 7">
  <br>
-<strong>Figure 7:</strong> Regression between observed and predicted values of SAR values for all data.
+<strong>Figure 7:</strong> Regression between observed and predicted SAR values for all data.
 </p>
 
 The prediction on the spatial raster data (with the indices selected in 2.3) shows a regression coefficient of 59% (Figure 8) and comparatively higher RMSE and MAE values than those in Figures 6 and 7, but still within an acceptable range. Spatially, it shows correspondence between sampling and observed field experience ('bolahna' salty and sweet) (Figure 10).
@@ -136,7 +136,7 @@ The prediction on the spatial raster data (with the indices selected in 2.3) sho
 <strong>Figure 8:</strong> Regression between observed and predicted values on raster data of SAR values for all data.
 </p>
 
-The RF results showed that, among the input data, the textural interpolated data of clays contributed the most in the model (Figure 9), followed by RS5_G2 (created using the blue, red edge, and green bands), YNNDSI (created using the red and yellow bands) and YBS2 (created with the yellow and red bands in a normalized index).
+The RF results showed that, among the input data, the textural interpolated data of clays contributed the most in the model (Figure 9), followed by RS5_G2 (created using the blue, red edge, and green bands), YNNDSI (created using the red and yellow bands) and YBS2 (based on the yellow and red bands in a normalized index).
 
 <p align="center">
  <img src="Images_report/Figura9.png" alt="Figure 9">
