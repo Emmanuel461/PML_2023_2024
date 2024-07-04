@@ -77,11 +77,11 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 
 **Architecture**:
 - Input Layer: Number of features equal to the input size (4 selected index).
-- Convolutional Layer: 1D convolution with a kernel size of 3 and 32 filters (considering a dataframe not a image as input).
+- Convolutional Layer: 1D convolution with a kernel size of 3 and 32 filters (considering a data frame not an image as input).
 - Batch Normalization: Applied after the convolutional layer.
 - Activation Function: ReLU.
 - Pooling Layer: MaxPooling with a kernel size of 2.
-- Fully Connected Layers: Three hidden layers with 32 units each followed by batch normalization and ReLU activation.
+- Fully Connected Layers: Three hidden layers with 32 units each followed by batch normalization and ReLU activation (here the selection of 3 hidden layers was based on the effect of adding or removing layers, finding that 3 provide the best results in the prediction process). 
 - Dropout: Applied with a probability of 0.01.
 - Output Layer: Single neuron for regression output (SAR values predicted).
 
