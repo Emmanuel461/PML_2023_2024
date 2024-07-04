@@ -77,11 +77,11 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 
 **Architecture**:
 - Input Layer: Number of features equal to the input size (4 selected index).
-- Convolutional Layer: 1D convolution with a kernel size of 3 and 32 filters (considering a dataframe not a image as input).
+- Convolutional Layer: 1D convolution with a kernel size of 3 and 32 filters (considering a data frame not an image as input).
 - Batch Normalization: Applied after the convolutional layer.
 - Activation Function: ReLU.
 - Pooling Layer: MaxPooling with a kernel size of 2.
-- Fully Connected Layers: Three hidden layers with 32 units each followed by batch normalization and ReLU activation.
+- Fully Connected Layers: Three hidden layers with 32 units each followed by batch normalization and ReLU activation (here the selection of 3 hidden layers was based on the effect of adding or removing layers, finding that 3 provide the best results in the prediction process). 
 - Dropout: Applied with a probability of 0.01.
 - Output Layer: Single neuron for regression output (SAR values predicted).
 
@@ -95,7 +95,6 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 
 ### RF (Random Forest Regressor).
 
-
 **Architecture**:
 - Number of Trees (Estimators): 100
 - Criterion: Squared error
@@ -107,9 +106,9 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 - Random State: 65 for training-test splitting.
 - Evaluation Metrics: R2 Score, Mean Absolute Error (MAE), Root Mean Square Error (RMSE), Pearson's Correlation.
 
-In this RF modeling process, the scaler result was saved during the training process to ensure consistency between training data and prediction data. The standardization method `StandardScaler` from the `scikit-learn` library was used. This scaler was saved and subsequently applied to the input raster before predictions were made, ensuring that the raster features were transformed consistently with the training data, which is crucial for model accuracy (Pedregosa et al. 2011).
+In this RF modeling process, the scaler result was saved during the training process to ensure consistency between training data and prediction data. The standardization method `StandardScaler` from the `scikit-learn` library was used. This scaler was saved and applied to the input raster before predictions were made, ensuring that the raster features were transformed consistently with the training data, which is crucial for model accuracy (Pedregosa et al. 2011).
 
-The choice of architecture for CNN-1D involved testing different hidden layers and nodes per iteration and running the model. Similarly, in the case of the RF, different parameters and the number of estimators were tested to observe the behavior of the model and its performance (it was run starting at 50 trees and going up to 1000 using an interval of 50 trees). Different optimizers such as SGD, Adam, RMSProp, Rprop, among others, were also tested, determining that Adagrad showed the best results. Given the range of high values in the input data (Figure 2), Adagrad adjusts the learning rate for each parameter individually, assigning a higher rate to parameters with less frequent gradients and a lower rate to those with more frequent gradients (Duchi et al. 2012), which could explain its better performance considering the high range of the SAR data.
+The choice of architecture for CNN-1D involved testing different hidden layers and nodes per iteration and running the model. Similarly, in the case of the RF, various parameters and the number of estimators were tested to observe the behavior of the model and its performance (it was run starting at 50 trees and going up to 1000 using an interval of 50 trees). Different optimizers such as SGD, Adam, RMSProp, Rprop, among others, were also tested, determining that Adagrad showed the best results. Given the range of high values in the input data (Figure 2), Adagrad adjusts the learning rate for each parameter individually, assigning a higher rate to parameters with less frequent gradients and a lower rate to those with more frequent gradients (Duchi et al. 2012), which could explain its better performance considering the high range of the SAR data.
 
 ## Results
 
@@ -156,7 +155,7 @@ The spatial distribution of the model output is shown in Figure 10, where it is 
 ## Analysis
 The results show that the RSG5_G2 index, derived from satellite data, was one of the most important in the Random Forest (RF) modeling (Figure 9). In addition, it presented a moderate correlation with electrical conductivity (EC) (Figure 5). This agrees with the research of Tan et al. (2023), which highlights the indices and the red-edge spectral band as relevant for predicting soil salinity. This same pattern is observed in the yellow band used in the YNNDSI.
 
-Soil texture is one of the factors included in this study and showed a great influence on both data correlation and modeling. This agrees with Fourati et al. (2017), who mention soil texture as one of the aspects most related to the spatial distribution of soil salinity.
+Soil texture is one of the factors included in this study and greatly influenced data correlation and modeling. This agrees with Fourati et al. (2017), who mention soil texture as one of the aspects most related to the spatial distribution of soil salinity.
 
 Regarding the coefficient of determination (R²) results, considering a study with the same satellite sensor (PlaneScope), the values obtained during the test phase were approximately 62%. These results are like those reported by Tan et al. (2023), with an R² of 56%. Similarly, Naimi et al. (2021) obtained accuracies around 48%, and Mzid et al. (2023) reported an R² close to 67%. These studies agree that the RF method is an effective method for soil salinity mapping.
 
