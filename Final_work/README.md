@@ -1,8 +1,8 @@
 # **Final work report**
 
-# Introduction
+## Introduction
 
-The research focuses on the problem of soil salinity in rice production areas within mangroves, specifically in Guinea-Bissau, West Africa. This issue is of paramount importance due to the vital role of rice in the local diet and the significant impact of soil salinity on agricultural productivity in the region (Balasubramanian et al., 2007; Nations, 2018). Compounded by unpredictable rainfall patterns and inadequate diagnostic methods, the management of soil salinity poses a considerable challenge, underscoring the urgent need for innovative approaches (Garbanzo et al., 2024; Mendes & Fragoso, 2023). Leveraging satellite imagery and machine learning algorithms offers a promising solution to address this complex issue and enhance agricultural practices in rice production (Chuvieco, 2009; Wu et al., 2018).
+The final work focuses on the problem of soil salinity in rice production areas within mangroves, specifically in Guinea-Bissau, West Africa. This issue is of paramount importance due to the vital role of rice in the local diet and the significant impact of soil salinity on agricultural productivity in the region (Balasubramanian et al., 2007; Nations, 2018). Compounded by unpredictable rainfall patterns and inadequate diagnostic methods, the management of soil salinity poses a considerable challenge, underscoring the urgent need for innovative approaches (Garbanzo et al., 2024; Mendes & Fragoso, 2023). Leveraging satellite imagery and machine learning algorithms offers a promising solution to address this complex issue and enhance agricultural practices in rice production (Chuvieco, 2009; Wu et al., 2018).
 
 ## Data Section
 
@@ -20,11 +20,11 @@ The research focuses on the problem of soil salinity in rice production areas wi
 
 Subsequently, a series of salinity mapping-oriented indices was created (see [Index_table.md](Markdown_tables/Index_table.md)).
 
-**Interpolated texture data**: Sand, silt, and clay data were interpolated by ordinary kriging to spatially make available texture data from the study area, using the procedure from the work of Garbanzo et al. (2024).
+**Interpolated texture data**: Sand, silt, and clay data were interpolated by ordinary kriging to make available spatially texture data from the study area, using the procedure from the work of Garbanzo et al. (2024).
 
 ### Description of Sodium Absorption Ratio (SAR) Sampling Data
 
-SAR data show high salinity conditions in the study area, with concentrations up to 200 meq L^-1 (Figure 2).
+SAR data show high salinity conditions in the study area, with concentrations up to 200 meq L<sup>-1</sup> (Figure 2).
 
 <p align="center">
  <img src="Images_report/Figura2.png" alt="Figure 2">
@@ -50,7 +50,7 @@ This trend is shown in the scatterplot of the data grouped thematically by textu
 
 ### Selection of Indices for Modeling
 
-For the extraction of the index information, a 6m buffer was applied over the sampling points. Subsequently, the area statistics function was applied to each index to obtain the median of the values of each buffer. This methodology was based on that applied in a similar study by Wu et al. (2018).
+For the extraction of the index information, a 6m buffer was applied over the sampling points. Subsequently, the area statistics function was applied to each index to obtain the median of the values of each buffer. This methodology was based on a similar study applied by Wu et al. (2018).
 
 Once these index data were extracted and correlated with SAR values, those with the 10 highest correlations were selected (Figure 5). Subsequently, considering the indices with similar origins in spectral terms and similar correlations, the YNNDSI, Clay-Raster, YBS2, and RS5_G2 indices were selected to model the data.
 
@@ -62,9 +62,10 @@ Once these index data were extracted and correlated with SAR values, those with 
 
 ### Data Storage in Google Earth Engine (GEE) and Google Drive
 
-The satellite data and texture interpolated data were stored in GEE to facilitate the process of calculating the vegetation indices and processing them using the Python programming language. This call from GEE was performed using the Earth Engine and [GeeMap](https://geemap.org/) libraries. Subsequently, all the results of these processes stored in Google Drive were called to the local environment using the PyDrive library.
+The satellite and texture interpolated data were stored in GEE to facilitate the process of calculating vegetation indices and processing them using the Python programming language. This call from GEE was performed using the Earth Engine (EE) and [GeeMap](https://geemap.org/) libraries. Subsequently, all the results of these processes stored in Google Drive were called to the local environment using the PyDrive library.
 
 ## Data organization
+Was conducted by the division of the data in 80% for training and 20% for testing:
 
 - **Training Set**: Used to train the model.
 - **Validation Set**: Used to adjust the model's hyperparameters and evaluate its performance during training to avoid overfitting.
@@ -82,7 +83,7 @@ The satellite data and texture interpolated data were stored in GEE to facilitat
 - Pooling Layer: MaxPooling with a kernel size of 2.
 - Fully Connected Layers: Three hidden layers with 32 units each followed by batch normalization and ReLU activation.
 - Dropout: Applied with a probability of 0.01.
-- Output Layer: Single neuron for regression output.
+- Output Layer: Single neuron for regression output (SAR values predicted).
 
 **Hyperparameters**:
 - Apprenticeship Rate: 0.1
@@ -107,7 +108,7 @@ The satellite data and texture interpolated data were stored in GEE to facilitat
 
 In this RF modeling process, the scaler result was saved during the training process to ensure consistency between training data and prediction data. The standardization method `StandardScaler` from the `scikit-learn` library was used. This scaler was saved and subsequently applied to the input raster before predictions were made, ensuring that the raster features were transformed consistently with the training data, which is crucial for model accuracy (Pedregosa et al. 2011).
 
-The choice of architecture for CNN-1D involved testing different hidden layers and nodes per iteration and running the model. Similarly, in the case of the RF, different parameters and the number of estimators were tested in order to observe the behavior of the model and its performance (it was run starting at 50 trees and going up to 1000 using an interval of 50 trees). Different optimizers such as SGD, Adam, RMSProp, Rprop, among others, were also tested, determining that Adagrad showed the best results. Given the range of high values in the input data (Figure 2), Adagrad adjusts the learning rate for each parameter individually, assigning a higher rate to parameters with less frequent gradients and a lower rate to those with more frequent gradients (Duchi et al. 2012), which could explain its better performance.
+The choice of architecture for CNN-1D involved testing different hidden layers and nodes per iteration and running the model. Similarly, in the case of the RF, different parameters and the number of estimators were tested in order to observe the behavior of the model and its performance (it was run starting at 50 trees and going up to 1000 using an interval of 50 trees). Different optimizers such as SGD, Adam, RMSProp, Rprop, among others, were also tested, determining that Adagrad showed the best results. Given the range of high values in the input data (Figure 2), Adagrad adjusts the learning rate for each parameter individually, assigning a higher rate to parameters with less frequent gradients and a lower rate to those with more frequent gradients (Duchi et al. 2012), which could explain its better performance considering the high range of the SAR data.
 
 ## Results
 
@@ -127,7 +128,7 @@ Evaluating the model on all observed data, equally acceptable behavior is observ
 <strong>Figure 7:</strong> Regression between observed and predicted values of SAR values for all data.
 </p>
 
-The prediction on the spatial raster data (with the indices selected in 2.3) shows a regression coefficient of 59% and comparatively higher RMSE and MAE values than those in Figures 6 and 7, but still within an acceptable range. Spatially, it shows correspondence between sampling and observed field experience ('bolahna' salty and sweet) (Figure 8).
+The prediction on the spatial raster data (with the indices selected in 2.3) shows a regression coefficient of 59% (Figure 8) and comparatively higher RMSE and MAE values than those in Figures 6 and 7, but still within an acceptable range. Spatially, it shows correspondence between sampling and observed field experience ('bolahna' salty and sweet) (Figure 10).
 
 <p align="center">
  <img src="Images_report/Figura8.png" alt="Figure 8">
@@ -135,7 +136,7 @@ The prediction on the spatial raster data (with the indices selected in 2.3) sho
 <strong>Figure 8:</strong> Regression between observed and predicted values on raster data of SAR values for all data.
 </p>
 
-The RF results showed that, among the input data, the textural interpolated data of clays contributed the most in the model (Figure 9), followed by RS5_G2 (created using the blue, red edge and green bands), YNNDSI (created using the red and yellow bands) and YBS2 (created with the yellow and red bands in a normalized index).
+The RF results showed that, among the input data, the textural interpolated data of clays contributed the most in the model (Figure 9), followed by RS5_G2 (created using the blue, red edge, and green bands), YNNDSI (created using the red and yellow bands) and YBS2 (created with the yellow and red bands in a normalized index).
 
 <p align="center">
  <img src="Images_report/Figura9.png" alt="Figure 9">
