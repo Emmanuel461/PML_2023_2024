@@ -86,7 +86,7 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 - Output Layer: Single neuron for regression output (SAR values predicted).
 
 **Hyperparameters**:
-- Apprenticeship Rate: 0.1
+- Learning Rate: 0.1
 - Epochs: 50
 - Batch Size: 32
 - Optimizer: Adagrad
