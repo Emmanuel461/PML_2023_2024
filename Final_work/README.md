@@ -95,6 +95,7 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 
 ### RF (Random Forest Regressor).
 
+
 **Architecture**:
 - Number of Trees (Estimators): 100
 - Criterion: Squared error
