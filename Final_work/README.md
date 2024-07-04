@@ -112,7 +112,7 @@ The choice of architecture for CNN-1D involved testing different hidden layers a
 
 ## Results
 
-The results of the RF model on the test set (20% of the samples) show a predictive ability of 62% according to the regression coefficient, with Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) values of 22.58 and 29.11 respectively, which is acceptable given the high salinity conditions and the range of data in the study area (Figure 6).
+The results of the RF model on the test set (20% of the samples) show a predictive ability of 61% according to the regression coefficient, with Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE) values of 22.23 and 29.40 respectively, which is acceptable given the high salinity conditions and the range of data in the study area (Figure 6).
 
 <p align="center">
  <img src="Images_report/Figura6.png" alt="Figure 6">
