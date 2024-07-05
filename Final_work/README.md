@@ -121,7 +121,7 @@ The results of the RF model on the test set (20% of the samples) show a predicti
 <strong>Figure 6:</strong> Regression between observed and predicted SAR values for test data.
 </p>
 
-Evaluating the model on all observed data, equally acceptable behavior is observed with good predictive ability and lower RMSE and MAE errors compared with the test data (Figure 7).
+Evaluating the model on all observed data, equally acceptable behavior is observed with good predictive ability and lower RMSE and MAE errors than the test data (Figure 7).
 
 <p align="center">
  <img src="Images_report/Figura7.png" alt="Figure 7">
@@ -178,5 +178,5 @@ Regarding the coefficient of determination (R²) results, considering a study wi
 ## Contributions: 
 
 Emmanuel Jesús Céspedes Rivera developed and implemented this final work project.
-The data come from the fieldwork of Gabriel Garbanzo León, and the work of many people on the Malmon Desira Project [Malmon Project](https://www.malmon-desira.com/)
+The data come from the fieldwork of Gabriel Garbanzo León, and the work of many people on the [Malmon Desira Project](https://www.malmon-desira.com/)
 The analysis of the soil sampling was made by Centro de Investigaciones Agronómicas de la Universidad de Costa Rica. 
