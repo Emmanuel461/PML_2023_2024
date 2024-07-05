@@ -104,7 +104,7 @@ Was conducted by the division of the data in 80% for training and 20% for testin
 **Hyperparameters**:.
 - Scaler: StandardScaler for feature normalization.
 - Random State: 65 for training-test splitting.
-- Evaluation Metrics: R2 Score, Mean Absolute Error (MAE), Root Mean Square Error (RMSE), Pearson's Correlation.
+- Evaluation Metrics: R2 Score, Mean Absolute Error (MAE), Root Mean Square Error (RMSE) and Pearson's Correlation.
 
 In this RF modeling process, the scaler result was saved during the training process to ensure consistency between training data and prediction data. The standardization method `StandardScaler` from the `scikit-learn` library was used. This scaler was saved and applied to the input raster before predictions were made, ensuring that the raster features were transformed consistently with the training data, which is crucial for model accuracy (Pedregosa et al. 2011).
 
