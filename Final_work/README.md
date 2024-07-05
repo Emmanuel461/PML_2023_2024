@@ -178,5 +178,5 @@ Regarding the coefficient of determination (R²) results, considering a study wi
 ## Contributions: 
 
 Emmanuel Jesús Céspedes Rivera developed and implemented this final work project.
-The data come from the fieldwork of Gabriel Garbanzo León, and the work of many people on the Malmon Desira Project [https://www.malmon-desira.com/] (Malmon Project)
+The data come from the fieldwork of Gabriel Garbanzo León, and the work of many people on the Malmon Desira Project [Malmon Project](https://www.malmon-desira.com/)
 The analysis of the soil sampling was made by Centro de Investigaciones Agronómicas de la Universidad de Costa Rica. 
