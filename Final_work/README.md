@@ -174,3 +174,7 @@ Regarding the coefficient of determination (R²) results, considering a study wi
 - Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J., Passos, A., & Cournapeau, D. (2011). Scikit-learn: Machine Learning in Python Fabian. Journal of Machine Learning Research, 12(9), 2825–2830.
 - Tan, J., Ding, J., Han, L., Ge, X., Wang, X., Wang, J., Wang, R., Qin, S., Zhang, Z., & Li, Y. (2023). Exploring PlanetScope Satellite Capabilities for Soil Salinity Estimation and Mapping in Arid Regions Oases. Remote Sensing, 15(4). [https://doi.org/10.3390/rs15041066](https://doi.org/10.3390/rs15041066)
 - Wu, W., Zucca, C., Muhaimeed, A. S., Al-Shafie, W. M., Fadhil Al-Quraishi, A. M., Nangia, V., Zhu, M., & Liu, G. (2018). Soil salinity prediction and mapping by machine learning regression in Central Mesopotamia, Iraq. Land Degradation & Development, 29(11), 4005–4014. [https://doi.org/10.1002/LDR.3148](https://doi.org/10.1002/LDR.3148)
+
+Contributions: 
+
+This project was developed and implemented only by Emmanuel Jesús Céspedes Rivera.
